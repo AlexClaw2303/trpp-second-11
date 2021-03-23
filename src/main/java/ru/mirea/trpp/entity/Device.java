@@ -1,4 +1,4 @@
-package ru.mirea.trpp_second_11.entity;
+package ru.mirea.trpp.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.opencsv.bean.CsvBindByName;
@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 /** Сущность устройства. */
 @Getter
@@ -18,6 +18,11 @@ public class Device {
     @JsonProperty("id")
     @CsvBindByName(column = "id")
     private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
     /** Название устройства. */
     @JsonProperty("name")
     @CsvBindByName(column = "name")

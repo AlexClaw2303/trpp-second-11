@@ -1,9 +1,10 @@
-package ru.mirea.trpp_second_11.controllers;
+package ru.mirea.trpp.controllers;
 
 import com.opencsv.bean.CsvToBeanBuilder;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
+import ru.mirea.trpp.entity.Device;
 
 import java.io.InputStreamReader;
 import java.util.List;
@@ -18,11 +19,14 @@ public class DeviceController {
 
     /** Конструктор. */
     public DeviceController() {
-        deviceList = new CsvToBeanBuilder<Device>(new InputStreamReader(this.getClass().getResourceAsStream("/MOCK_DATA.csv"))).withType(Device.class).build().parse();
+        deviceList = new CsvToBeanBuilder<Device>(
+                new InputStreamReader(this.getClass().getResourceAsStream("/MOCK_DATA.csv"))).withType(Device.class)
+                        .build().parse();
     }
 
     /**
      * Получить список устройств.
+     *
      * @return список устройств
      */
     @Get()
@@ -32,6 +36,7 @@ public class DeviceController {
 
     /**
      * Найти устройство по идентификатору.
+     *
      * @param id идентификатор устройства
      * @return Устройство, если есть, иначе 404 ошибка
      */
